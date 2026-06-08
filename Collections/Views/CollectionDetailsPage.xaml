@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Collections.Views.CollectionDetailsPage">
+
+    <Grid RowDefinitions="Auto, *" Padding="20">
+        <Button Grid.Row="0" Text="Dodaj nowy element" Clicked="OnAddItemClicked" Margin="0,0,0,20" />
+
+        <CollectionView x:Name="ItemsListView" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,5" Padding="15">
+                        <Grid ColumnDefinitions="*, Auto, Auto">
+                            <VerticalStackLayout Grid.Column="0">
+                                <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" />
+                                <Label Text="{Binding Details}" FontSize="14" TextColor="Gray" />
+                            </VerticalStackLayout>
+
+                            <Button Grid.Column="1" Text="Edytuj" Margin="5,0"
+                                    Clicked="OnEditItemClicked"
+                                    CommandParameter="{Binding .}" />
+
+                            <Button Grid.Column="2" Text="Usuń" BackgroundColor="Red" TextColor="White"
+                                    Clicked="OnDeleteItemClicked"
+                                    CommandParameter="{Binding .}" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
